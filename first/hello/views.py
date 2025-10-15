@@ -1,9 +1,7 @@
 from django.shortcuts import render
 from .models import *
-# Create your views here.
 
-def index(request):
-    pass
+
 # Задание 1.
 
 # Создайте функцию, которая должна: 
@@ -19,6 +17,9 @@ def index(request):
      
 # Подсказка: {% empty %} - если нет данных
 
+def task_1(request):
+    books = Book.objects.filter(is_available=True).order_by('title')
+    return render(request, 'index.html', {'books': books})
 
 
 # Задание 2
@@ -37,6 +38,12 @@ def index(request):
 #     если у автора нет книг — напишите: «У этого автора пока нет книг в каталоге».
  
 # Подсказка: Для получения всех книг автора можно обращаться по id Book.objects.filter(author=author_id).
+
+def task_2(request):
+    id_a = 1
+    books = Book.objects.filter(author=id_a).order_by('-publication_year')
+    return render(request, 'index2.html', {'books': books})
+
 
 
 
@@ -68,6 +75,12 @@ def index(request):
 # lt - меньше чем
 # lte - меньше чем и равно
 
+
+from django.db.models import Count, Avg, Min, Max
+
+def task_3(request):
+    avg_price = Book.objects.aggregate(Avg('price'))
+    return render(request, 'index3.html', {'avg': avg_price[]})
 
 
 # Задание 4
