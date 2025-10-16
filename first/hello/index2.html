@@ -6,6 +6,9 @@
     <title>Document</title>
 </head>
 <body>
-    
+    {% for book in books %}
+    <h1>{{ book.title }}</h1>
+    <p>{{ book.publication_year }} - {{ book.price }}</p>
+    {% endfor %}
 </body>
 </html>

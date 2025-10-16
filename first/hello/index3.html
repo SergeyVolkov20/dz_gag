@@ -6,6 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <h1>Всего книг: {{ total_books }}</h1>
+    <h1>Средняя цена: {{ avg_price|floatformat:2 }}</h1>
+    <h1>Годы издания: от {{ min_year }} до {{ max_year }}</h1>
 </body>
 </html>
