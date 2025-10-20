@@ -79,8 +79,8 @@ def task_2(request):
 from django.db.models import Count, Avg, Min, Max
 
 def task_3(request):
-    avg_price = Book.objects.aggregate(Avg('price'))
-    return render(request, 'index3.html', {'avg': avg_price[]})
+    avg_price = Book.objects.aggregate(Avg('price'), minn=Min('price'), maxx=Max('price'))
+    return render(request, 'index3.html', {'avg': avg_price})
 
 
 # Задание 4
@@ -97,3 +97,12 @@ def task_3(request):
 #     заголовок: «Дорогие старые книги»,
 #     таблица с колонками: Название, Автор, Год, Цена
 #     если таких книг нет — сообщение: «Не найдено дорогих старых книг».
+
+
+def task_4(request):
+    need = Book.objects.filter(price__gt=1000, publication_year__lt=1980).order_by('-price')
+    context= {
+        'need': need  
+    }
+    return render(request, 'index4.html', context)
+

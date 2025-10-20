@@ -21,5 +21,7 @@ from hello import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('book', views.task_1),
-    path('111', views.task_2)
+    path('author', views.task_2),
+    path('avg', views.task_3),
+    path('need', views.task_4)
 ]
